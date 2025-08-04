@@ -64,7 +64,3 @@ Before you begin, ensure you have installed the following:
    npm start
    ```
    The application will open in your default browser at `http://localhost:3000`
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
