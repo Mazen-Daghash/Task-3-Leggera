@@ -5,11 +5,9 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Database configuration
 const db = mysql.createConnection({
   host: 'localhost',       
   user: 'root',           
@@ -17,7 +15,6 @@ const db = mysql.createConnection({
   database: 'auth_db'     
 });
 
-// Connect to database
 db.connect((err) => {
   if (err) {
     console.error('Error connecting to database:', err);
@@ -27,11 +24,9 @@ db.connect((err) => {
 
 
 
-// Routes
 app.post('/api/signup', (req, res) => {
   const { username, email, password } = req.body;
   
-  // Basic validation
   if (!username || !email || !password) {
     return res.status(400).json({ message: 'All fields are required' });
   }
@@ -49,7 +44,6 @@ app.post('/api/signup', (req, res) => {
 app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
   
-  // Basic validation
   if (!email || !password) {
     return res.status(400).json({ message: 'Email and password are required' });
   }
@@ -62,16 +56,13 @@ app.post('/api/login', (req, res) => {
     }
     
     if (results.length > 0) {
-      // User found
       res.status(200).json({ message: 'Login successful', user: results[0] });
     } else {
-      // No user found with these credentials
       res.status(401).json({ message: 'Invalid email or password' });
     }
   });
 });
 
-// Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
