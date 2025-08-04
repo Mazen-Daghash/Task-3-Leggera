@@ -11,22 +11,16 @@ app.use(express.json());
 
 // Database configuration
 const db = mysql.createConnection({
-  host: 'localhost',       // Replace with your database host
-  user: 'root',           // Replace with your database username
-  password: 'Daghash1029',           // Replace with your database password
-  database: 'auth_db'     // Replace with your database name
+  host: 'localhost',       
+  user: 'root',           
+  password: 'Daghash1029',           
+  database: 'auth_db'     
 });
 
 // Connect to database
 db.connect((err) => {
   if (err) {
     console.error('Error connecting to database:', err);
-    console.error('Connection details:', {
-      host: 'localhost',
-      user: 'root',
-      database: 'auth_db'
-    });
-    process.exit(1);
   }
   console.log('Connected to MySQL database');
 });

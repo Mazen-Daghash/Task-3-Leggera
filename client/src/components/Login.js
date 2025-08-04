@@ -24,12 +24,9 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        // Login successful
         alert('Login successful!');
-        // You can redirect to dashboard or home page here
-        // navigate('/dashboard');
       } else {
-        setError(data.message || 'Login failed');
+        setError('Login failed');
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
@@ -46,7 +43,7 @@ function Login() {
               <h2 className="card-title text-center mb-4">Login</h2>
               
               {error && (
-                <div className="alert alert-danger" role="alert">
+                <div className="alert alert-danger">
                   {error}
                 </div>
               )}
@@ -85,7 +82,7 @@ function Login() {
               
               <div className="mt-3 text-center">
                 <p>
-                  Don't have an account?{' '}
+                  Don't have an account?
                   <button 
                     className="btn btn-link p-0" 
                     onClick={() => navigate('/signup')}

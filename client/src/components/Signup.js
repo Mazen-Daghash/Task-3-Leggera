@@ -14,7 +14,6 @@ function Signup() {
     e.preventDefault();
     setError('');
 
-    // Basic validation
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -32,11 +31,10 @@ function Signup() {
       const data = await response.json();
 
       if (response.ok) {
-        // Signup successful
         alert('Signup successful! Please login with your credentials.');
         navigate('/login');
       } else {
-        setError(data.message || 'Signup failed');
+        setError('Signup failed');
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
@@ -116,7 +114,7 @@ function Signup() {
               
               <div className="mt-3 text-center">
                 <p>
-                  Already have an account?{' '}
+                  Already have an account?
                   <button 
                     className="btn btn-link p-0" 
                     onClick={() => navigate('/login')}
